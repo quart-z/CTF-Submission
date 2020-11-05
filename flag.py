@@ -2,9 +2,11 @@
 # Make sure to do pip3 install swpag_client before running
 
 from swpag_client import Team
+import time
 
-flagToken = "" # put team's flag token here (between "")
-t = Team("http://actf0-thu.cse365.io/", flagToken) # sets team
+teamInterface = "http://actf1-thu.rev.fish/" # Input team interface here (between ""). Invalid example given
+flagToken = "XXXXXXXXXXXXX" # put team's flag token here (between ""). Invalid example given.
+t = Team(teamInterface, flagToken) # sets team
 
 
 print("Welcome to flag submission! \n")
@@ -15,10 +17,12 @@ def submitFlag():
 		choice = input("Input flag to submit, or 0 to quit: ") # Takes input as string
 		if (choice != "0"):
 			try:
-				t.submit_flag([choice]) # Submits string of flag
-				print("Flag successfully submitted, status: ")
-			except:
+				status = t.submit_flag([choice]) # Submits string of flag
+				print("Flag successfully submitted, status: " + str(status))
+			except Exception as e:
+				print(e)
 				print("Game not running, try again later")
+				print("Error : " + str(e))
 				choice = "0"
 
 	print("Quitting program...") # Only output when while loop breaks
