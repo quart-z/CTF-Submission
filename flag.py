@@ -5,7 +5,7 @@ from swpag_client import Team
 import time
 
 teamInterface = "http://actf1-thu.rev.fish/" # Input team interface here (between ""). Invalid example given
-flagToken = "XXXXXXXXXXXXX" # put team's flag token here (between ""). Invalid example given.
+flagToken = "XXXXXXXXXXXX" # put team's flag token here (between ""). Invalid example given.
 t = Team(teamInterface, flagToken) # sets team
 
 
@@ -20,7 +20,6 @@ def submitFlag():
 				status = t.submit_flag([choice]) # Submits string of flag
 				print("Flag successfully submitted, status: " + str(status))
 			except Exception as e:
-				print(e)
 				print("Game not running, try again later")
 				print("Error : " + str(e))
 				choice = "0"
